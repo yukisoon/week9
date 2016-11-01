@@ -25,6 +25,7 @@ public:
 
 	Vector3D operator+(const Vector3D& input)
 	{
+		std::cout << "++" << std::endl;
 		Vector3D vec;
 		vec.x_ = this->x_ + input.x_;
 		vec.y_ = this->y_ + input.y_;

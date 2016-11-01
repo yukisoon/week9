@@ -5,41 +5,53 @@
 
 int main()
 {
-	int col = 5;
-	VectorND v0(col);
+	VectorND v0(4);
 
-	for (int i = 0; i < col; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		v0.v[i] = i+1;
+		v0.v[i] = i + 1;
 	}
-
-	//VectorND v1 = VectorND(4, 5, 6);
-	//VectorND v2;
-	//v2 = v0 + v1;
-
-	/*std::cout << v2.x_ << " " << v2.y_ << " " << v2.z_ << std::endl;
-
+	
+	MatrixMxN m(5, 4);	
+	for(int i = 0; i < 5; i++)
+	{ 
+		for (int j = 0; j < 4; j++)
+		{
+			m.vs[i]->v[j] = i + j;
+		}
+	}
+	
+	std::cout << *m.vs[0] << std::endl;
+	std::cout << *m.vs[1] << std::endl;
+	std::cout << *m.vs[2] << std::endl;
+	std::cout << *m.vs[3] << std::endl;
+	std::cout << *m.vs[4] << std::endl;
+	std::cout << std::endl;
 	std::cout << v0 << std::endl;
-	std::cout << v1 << std::endl;
-	std::cout << v2 << std::endl;
-
-	std::cout << v0 * v1 << std::endl;*/
-
-	MatrixMxN m(VectorND(col));
-
-	VectorND y = m * v0;
-
+	
+	VectorND y(5);
+	y = m * v0;
+	std::cout << std::endl;
 	std::cout << y << std::endl;
-
-
-
-	/*Matrix3x3 m(5, 4);
-	VectorND v(5);
-
-	vectorND y = m*v;*/
-
-
-
 
 	return 0;
 }
+
+
+//#include <iostream>
+//#include "Vector3D.h"
+//#include "Matrix3x3.h"
+//
+//
+//int main()
+//{
+//
+//	Vector3D v0 = Vector3D(1, 2, 3);
+//
+//	Matrix3x3 m(Vector3D(1,2,3), Vector3D(1, 2, 3), Vector3D(1, 2, 3));
+//
+//	Vector3D y = m * v0;
+//
+//	std::cout << y << std::endl;
+//	return 0;
+//}

@@ -5,29 +5,38 @@
 class MatrixMxN
 {
 public:
-	VectorND *row;
-	//VectorND row0, row1, row2;
+	VectorND **vs;
+	int row;
+	int col;
 
+	MatrixMxN()
+	{}
 
-
-	/*VectorND *rows_;
-	std::vector<VectorND> rows_;
-	std::vector<VectorND*> rows_;*/
-
-
-	MatrixMxN(VectorND *_r)
-		: row(_r)
+	MatrixMxN(const int& row_, const int& col_)
+		:row(row_), col(col_)
 	{
+		vs = new VectorND*[row_];
 
+		for (int i = 0; i < row; i++)
+		{
+			vs[i] = new VectorND(col);
+		}		
 	}
+	
+	~MatrixMxN()
+	{
+		delete[] vs;
+	}
+
 
 	VectorND operator*(const VectorND& rhs)
 	{
-		VectorND ans;
-
-		ans.x_ = row0 * rhs;
-		ans.y_ = row1 * rhs;
-		ans.z_ = row2 * rhs;
+		VectorND ans(row);
+		
+		for (int i = 0; i < row; i++)
+		{
+			ans.v[i] = *this->vs[i] * rhs;
+		}
 
 		return ans;
 	}
